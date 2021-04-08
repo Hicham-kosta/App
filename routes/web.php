@@ -98,3 +98,9 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 
 Route::get('/', 'HomeController@getWelcome');
+
+Route::get('/redirect/{service}', 'SocialController@redirect');
+
+Route::get('/callback/{service}', 'SocialController@callback');
+
+

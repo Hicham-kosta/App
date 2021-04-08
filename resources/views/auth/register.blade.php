@@ -43,7 +43,7 @@
                             <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label>
 
                             <div class="col-md-6">
-                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required>
+                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile">
 
                                 @error('mobile')
                                 <span class="invalid-feedback" role="alert">
@@ -80,6 +80,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                            </div>
+                            <div class="col-md-6 offset-md-4">
+                                <a href="{{url('redirect/facebook')}}">Login with facebook</a>
                             </div>
                         </div>
                     </form>
