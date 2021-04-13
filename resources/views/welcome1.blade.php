@@ -88,7 +88,7 @@
                 @endforeach
 
                 @forelse($_data as $data1)
-                    <p><p>{{$data1}}</p></p>
+                    <p>{{$data1}}</p>
                 @empty
                     <p>empty data</p>
                 @endforelse
