@@ -14,7 +14,10 @@ return [
     */
 
     "Hello guys" => "HELLO GUYS",
-    "welcome" => "WELCOME"
-
-
+    "welcome" => "WELCOME",
+    "offer name required" => "offer name required",
+    "offer name exist" => "offer name exist",
+   "price required" => "price required",
+    "price must be numeric" => "price must be numeric",
+    "details required" => "details required",
 ];
