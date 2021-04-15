@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\LaravelLocalization;
 
 class CrudController extends Controller
 {
@@ -40,19 +42,18 @@ class CrudController extends Controller
         return view('offers.create');
     }
 
-    public function store(Request $request){
+    public function store(OfferRequest $request){
         //Validate data before insert to database
 
-        $rules = $this -> getRules();
-        $message = $this -> getMessages();
+        //$rules = $this -> getRules();
+        //$message = $this -> getMessages();
 
+       // $validator = Validator::make($request->all(), $rules, $message);
 
-        $validator = Validator::make($request->all(), $rules, $message);
+        //if($validator -> fails()){
 
-        if($validator -> fails()){
-
-            return redirect()->back()->withErrors($validator)->withInputs($request->all());
-        }
+            //return redirect()->back()->withErrors($validator)->withInputs($request->all());
+        //}
         //insert
 
         Offer::create([
@@ -60,10 +61,10 @@ class CrudController extends Controller
             'price' => $request -> price,
             'details' => $request -> details,
         ]);
-        return redirect()->back()->with(['success' => 'Votre offre est ajoutée']);
+        return redirect()->back()->with(['success' => __('messages.Your Offer is include')]);
     }
 
-    protected function getRules(){
+   /* protected function getRules(){
         return $rules = [
             'name' => 'required|max:100|unique:offers,name',
             'price' => 'required|numeric',
@@ -80,6 +81,15 @@ class CrudController extends Controller
             'price.numeric' => __('messages.price must be numeric'),
             'details.required' => __('messages.details required'),
         ];
-    }
+    }*/
+
+    //public function getAllOffers(){
+
+       // $offers = offer::select('id',
+        //'name_'.LaravelLocalization::getCurrentLocale(). ' as name',
+        //'price',
+        //'details_'.LaravelLocalization::getCurrentLocal(). ' as details')->get();//return collection
+        //return view('offers.create', compact('offers'));
+   // }
 
 }

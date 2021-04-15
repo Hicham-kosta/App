@@ -68,7 +68,7 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Language</a>
+            <a class="navbar-brand" href="#">{{__('messages.Language')}}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -84,8 +84,8 @@
 
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="{{__('messages.Search')}}" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">{{__('messages.Search')}}</button>
                 </form>
             </div>
         </div>
@@ -94,7 +94,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Add your offer
+                    {{__('messages.Add Your Offer')}}
                 </div>
                 @if(Session::has('success'))
                     <div class="alert alert-success" role="alert">
@@ -107,29 +107,29 @@
                     {{--<input name="_token" value="{{csrf_token()}}">--}}
 
                     <div class="form group">
-                        <label for="exampleInputEmail1">Offer Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Offer Name">
+                        <label for="exampleInputEmail1">{{__('messages.Offer Name')}}</label>
+                        <input type="text" class="form-control" name="name" placeholder="{{__('messages.Enter Offer Name')}}">
                         @error('name')
-                        <small class="form-text text-danger">{{$message}}</small>
+                        <small class="form-text text-danger">{{$message}}</small>'
                         @enderror
                     </div>
                     <div class="form group">
-                        <label for="exampleInputPassword1" class="form-label">Offer Price</label>
-                        <input type="text" class="form-control" name="price" placeholder="Enter Offer Price">
+                        <label for="exampleInputPassword1" class="form-label">{{__('messages.Offer Price')}}</label>
+                        <input type="text" class="form-control" name="price" placeholder="{{__('messages.Enter Offer Price')}}">
                         @error('price')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                     </div>
                     <div class="form group">
-                        <label for="exampleInputPassword1" class="form-label">Offer Details</label>
-                        <input type="text" class="form-control" name="details" placeholder="Enter Offer Details">
+                        <label for="exampleInputPassword1" class="form-label">{{__('messages.Offer Details')}}</label>
+                        <input type="text" class="form-control" name="details" placeholder="{{__('messages.Enter Offer Details')}}">
                         @error('details')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                     </div>
                     <div><br /></div>
 
-                    <button type="submit" class="btn btn-primary">Save Offer</button>
+                    <button type="submit" class="btn btn-primary">{{__('messages.Save')}}</button>
                 </form>
 
                 </div>
