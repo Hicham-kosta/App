@@ -90,65 +90,29 @@
             </div>
         </div>
     </nav>
-        <div class="flex-center position-ref full-height">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">{{__('messages.Offer Name')}}</th>
+            <th scope="col">{{__('messages.Offer Price')}}</th>
+            <th scope="col">{{__('messages.Offer Details')}}</th>
+            <th scope="col">{{__('messages.Operation')}}</th>
+        </tr>
+        </thead>
+        <tbody>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    {{__('messages.Add Your Offer')}}
-                </div>
-                @if(Session::has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{Session::get('success')}}
+        @foreach($offers as $offer)
+        <tr>
+            <th scope="row">{{$offer -> id}}</th>
+            <td>{{$offer -> name}}</td>
+            <td>{{$offer -> price}}</td>
+            <td>{{$offer -> details}}</td>
+            <td><a href="{{url('offers/edit/'.$offer -> id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
+        </tr>
+        @endforeach
 
-                    </div>
-                @endif
-                <form method="POST" action="{{route('offers.store')}}">
-                @csrf
-                    {{--<input name="_token" value="{{csrf_token()}}">--}}
-
-                    <div class="form group">
-                        <label for="exampleInputEmail1">{{__('messages.Offer Name ar')}}</label>
-                        <input type="text" class="form-control" name="name_ar" placeholder="{{__('messages.Enter Offer Name')}}">
-                        @error('name_ar')
-                        <small class="form-text text-danger">{{$message}}</small>'
-                        @enderror
-                    </div>
-
-                    <div class="form group">
-                        <label for="exampleInputEmail1">{{__('messages.Offer Name en')}}</label>
-                        <input type="text" class="form-control" name="name_en" placeholder="{{__('messages.Enter Offer Name')}}">
-                        @error('name_en')
-                        <small class="form-text text-danger">{{$message}}</small>'
-                        @enderror
-                    </div>
-                    <div class="form group">
-                        <label for="exampleInputPassword1" class="form-label">{{__('messages.Offer Price')}}</label>
-                        <input type="text" class="form-control" name="price" placeholder="{{__('messages.Enter Offer Price')}}">
-                        @error('price')
-                        <small class="form-text text-danger">{{$message}}</small>
-                        @enderror
-                    </div>
-                    <div class="form group">
-                        <label for="exampleInputPassword1" class="form-label">{{__('messages.Offer Details ar')}}</label>
-                        <input type="text" class="form-control" name="details_ar" placeholder="{{__('messages.Enter Offer Details')}}">
-                        @error('details_ar')
-                        <small class="form-text text-danger">{{$message}}</small>
-                        @enderror
-                    </div>
-
-                    <div class="form group">
-                        <label for="exampleInputPassword1" class="form-label">{{__('messages.Offer Details en')}}</label>
-                        <input type="text" class="form-control" name="details_en" placeholder="{{__('messages.Enter Offer Details')}}">
-                        @error('details_en')
-                        <small class="form-text text-danger">{{$message}}</small>
-                        @enderror
-                    </div>
-                    <div><br /></div>
-
-                    <button type="submit" class="btn btn-primary">{{__('messages.Save')}}</button>
-                </form>
-
-                </div>
-            </div>
+        </tbody>
+    </table>
     </body>
 </html>

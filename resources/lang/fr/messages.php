@@ -30,5 +30,9 @@ return [
     "Enter Offer Details" => "Entrer les details de l'offre",
     "Save" => "Enregistrer",
     "Language" => "Langue",
-    "Your Offer is include" => "Votre Offre est ajoutée",
+    "Your Offer is include successfully" => "Votre Offre est ajoutée avec réussite",
+    "Operation" => "Operation",
+    "update" => "mettre à jour",
+    "Update Your Offer" => "Mise à jour de l'offer",
+    "update successfully" => "mise à jour réussie",
 ];
