@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
-use App\Http\Requests\OfferRequestUpdate;
 use App\Models\Offer;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Mcamara\LaravelLocalization\LaravelLocalization;
-
+use App\Traits\OfferTrait;
 
 class CrudController extends Controller
 {
+  use OfferTrait;
     /**
      * Create a new controller instance.
      *
@@ -56,9 +56,15 @@ class CrudController extends Controller
 
             //return redirect()->back()->withErrors($validator)->withInputs($request->all());
         //}
-        //insert
+
+        //save photo in folder
+
+        $file_name = $this -> saveImage($request -> photo, 'images/offers');
+
+        //insert data
 
         Offer::create([
+            'photo' => $file_name,
             'name_ar' => $request -> name_ar,
             'name_en' => $request -> name_en,
             'price' => $request -> price,
@@ -66,7 +72,8 @@ class CrudController extends Controller
             'details_en' => $request -> details_en
         ]);
         return redirect()->back()->with(['success' => __('messages.Your Offer is include successfully')]);
-    }
+        }
+
 
     public function getAllOffers(){
 
@@ -103,16 +110,18 @@ class CrudController extends Controller
        $offer = Offer::find($offer_id);
        if(!$offer)
            return redirect()-> back();
-
        //update deta
-       $offer->update($request->all());
-           return redirect()->back()->with(['success' => __('messages.update successfully')]);
+         // $offer->update($request->all());
+           //return redirect()->back()->with(['success' => __('messages.update successfully')]);
 
-        /*  $offer->update([
+          $offer->update([
               'name_ar'=> $request->name_ar,
               'name_en'=>$request->name_en,
-              'price'=>$request->price,...
-          ]);*/
+              'price'=>$request->price,
+              'details_ar' => $request->details_ar,
+              'details_en' => $request->details_en
+          ]);
+        return redirect()->back()->with(['success' => __('messages.update successfully')]);
    }
 
 }

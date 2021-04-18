@@ -38,5 +38,6 @@ return [
     "Operation" => "Operation",
     "update" => "update",
     "Update Your Offer" => "Update Your Offer",
-    "update successfully" => "update successfully"
+    "update successfully" => "update successfully",
+    "Add photo" => "Add photo",
 ];

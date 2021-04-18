@@ -35,4 +35,5 @@ return [
     "update" => "mettre à jour",
     "Update Your Offer" => "Mise à jour de l'offer",
     "update successfully" => "mise à jour réussie",
+    "Add photo" => "Ajouter une photo",
 ];

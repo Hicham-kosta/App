@@ -38,5 +38,6 @@ return [
     "Operation" => "العمليات,",
     "update" => "تعديل",
     "Update Your Offer" => "تعديل العرض",
-    "update successfully" => "تم التعديل بنجاح"
+    "update successfully" => "تم التعديل بنجاح",
+    "Add photo" => "إضافة صورة",
 ];
