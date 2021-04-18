@@ -121,4 +121,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('all', 'CrudController@getAllOffers');
 });
 
+    Route::get('youtube', 'CrudController@getVideo');
+
 });
+

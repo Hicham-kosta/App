@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\VideoViewer;
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use App\Models\Video;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Mcamara\LaravelLocalization\LaravelLocalization;
@@ -122,6 +124,13 @@ class CrudController extends Controller
               'details_en' => $request->details_en
           ]);
         return redirect()->back()->with(['success' => __('messages.update successfully')]);
+   }
+
+   public function getVideo(){
+
+        $video = Video::first();
+        event(new VideoViewer($video));
+       return view('youtube')->with('video', $video); // la variable video est passée à la page view
    }
 
 }
