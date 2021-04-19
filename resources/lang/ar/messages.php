@@ -40,4 +40,8 @@ return [
     "Update Your Offer" => "تعديل العرض",
     "update successfully" => "تم التعديل بنجاح",
     "Add photo" => "إضافة صورة",
+    "Offer photo" => "صورة العرض",
+    "delete" => "حذف",
+    "Offer not found" => "العرض غير موجود",
+    "Offer deleted successfully" => "تم الحذف بنجاح"
 ];

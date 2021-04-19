@@ -81,6 +81,7 @@ class CrudController extends Controller
 
         $offers = offer::select('id',
             'price',
+            'photo',
             'name_ar as name',
             'name_en as name',
             'details_ar as details',
@@ -99,7 +100,7 @@ class CrudController extends Controller
         if(!$offer){
             return redirect()->back();
         }
-        $offer = Offer::select('id', 'name_ar', 'name_en', 'details_ar', 'details_en', 'price') -> find($offer_id);
+        $offer = Offer::select('id', 'name_ar', 'name_en', 'details_ar', 'details_en', 'price', 'photo') -> find($offer_id);
         return view('offers.edit', compact('offer'));
 
         return $offer_id;
@@ -120,10 +121,24 @@ class CrudController extends Controller
               'name_ar'=> $request->name_ar,
               'name_en'=>$request->name_en,
               'price'=>$request->price,
+              'photo'=>$request->photo,
               'details_ar' => $request->details_ar,
               'details_en' => $request->details_en
           ]);
         return redirect()->back()->with(['success' => __('messages.update successfully')]);
+   }
+
+   public function deleteOffer($offer_id){
+
+        //check if offer exist
+       $offer = Offer::find($offer_id);
+       if(!$offer) {
+           return redirect()->back()->with(['error' => __('messages.Offer not found')]);
+       }
+
+       $offer ->delete();
+       return redirect()->route('offers.all')
+           ->with(['success'=>__('messages.Offer deleted successfully')]);
    }
 
    public function getVideo(){

@@ -36,4 +36,8 @@ return [
     "Update Your Offer" => "Mise à jour de l'offer",
     "update successfully" => "mise à jour réussie",
     "Add photo" => "Ajouter une photo",
+    "Offer photo" => "photo de l'offre",
+    "delete" => "supprimer",
+    "Offer not found" => "L'offre n'existe pas",
+    "Offer deleted successfully" => "L'offre est supprimée avec succé",
 ];

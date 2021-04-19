@@ -40,4 +40,8 @@ return [
     "Update Your Offer" => "Update Your Offer",
     "update successfully" => "update successfully",
     "Add photo" => "Add photo",
+    "Offer photo" => "Offer photo",
+    "delete" => "delete",
+    "Offer not found" => "Offer not found",
+    "Offer deleted successfully" => "Offer deleted successfully",
 ];
