@@ -126,3 +126,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 });
 
+########################### AJAX ############################
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+    'middleware' =>  ['localeSessionRedirect' , 'localizationRedirect' , 'localeViewPath']
+], function() {
+
+    Route::group(['prefix' => 'ajax_offers'], function () {
+
+        Route::get('create', 'OfferAjaxController@create');
+        Route::post('store', 'OfferAjaxController@store')->name('ajax.offers.store');
+
+    });
+});
+
+########################### AJAX ############################
+
