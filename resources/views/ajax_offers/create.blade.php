@@ -14,7 +14,7 @@
 
                 </div>
             @endif
-            <form method="POST" action="{{route('ajax.offers.store')}}" enctype="multipart/form-data">
+            <form method="POST" id="offerForm" action="" enctype="multipart/form-data">
                 @csrf
                 {{--<input name="_token" value="{{csrf_token()}}">--}}
 
@@ -65,7 +65,7 @@
                 </div>
                 <div><br /></div>
 
-                <button id="save" class="btn btn-primary">{{__('messages.Save')}}</button>
+                <button id="save_offer" class="btn btn-primary">{{__('messages.Save')}}</button>
             </form>
 
         </div>
@@ -74,10 +74,10 @@
     @stop
 @section('scripts')
 <script>
-    $(document).on('click', 'save', function(e){
+    $(document).on('click', '#save_offer', function(e){
         e.preventDefault();
         $.ajax({
-            type: 'POST',
+            type: 'post',
             url: "{{route('ajax.offers.store')}}",
 
             data: {
