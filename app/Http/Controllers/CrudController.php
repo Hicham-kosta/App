@@ -73,7 +73,8 @@ class CrudController extends Controller
             'details_ar' => $request -> details_ar,
             'details_en' => $request -> details_en
         ]);
-        return redirect()->back()->with(['success' => __('messages.Your Offer is include successfully')]);
+        return redirect()->back()
+            ->with(['success' => __('messages.Your Offer is include successfully')]); //Session
         }
 
 
@@ -106,7 +107,7 @@ class CrudController extends Controller
         return $offer_id;
    }
 
-   public function updateOffer(OfferRequest $request, $offer_id){
+   public function updateOffer(Request $request, $offer_id){
 
         //update data
        //chek if offer exist
@@ -125,7 +126,8 @@ class CrudController extends Controller
               'details_ar' => $request->details_ar,
               'details_en' => $request->details_en
           ]);
-        return redirect()->back()->with(['success' => __('messages.update successfully')]);
+        return redirect()->back()
+            ->with(['success' => __('messages.update successfully')]); //Session
    }
 
    public function deleteOffer($offer_id){
@@ -133,7 +135,7 @@ class CrudController extends Controller
         //check if offer exist
        $offer = Offer::find($offer_id);
        if(!$offer) {
-           return redirect()->back()->with(['error' => __('messages.Offer not found')]);
+           return redirect()->back()->with(['error' => __('messages.Offer not found')]); //Session
        }
 
        $offer ->delete();

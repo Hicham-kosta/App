@@ -114,7 +114,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     Route::group(['prefix' => 'offers'], function(){
     Route::get('create', 'CrudController@create');
-    //Route::post('store', 'CrudController@store')-> name('offers.store');
+    Route::post('store', 'CrudController@store')-> name('offers.store');
 
     Route::get('edit/{offer_id}', 'CrudController@editOffer');
     Route::post('update/{offer_id}', 'CrudController@updateOffer')-> name('offers.update');
@@ -134,6 +134,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
         Route::get('create', 'OfferController@create');
         Route::post('store', 'OfferController@store')->name('ajax.offers.store');
+
+        Route::get('all', 'OfferController@all')-> name('ajax.offers.all');
+        Route::post('delete', 'OfferController@delete')-> name('ajax.offers.delete');
+
+        //with post not reload of page
 
     });
 

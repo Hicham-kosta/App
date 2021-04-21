@@ -96,7 +96,7 @@
                 <div class="title m-b-md">
                     {{__('messages.Add Your Offer')}}
                 </div>
-                @if(Session::has('success'))
+                @if(Session::has('success')) {{--Session--}}
                     <div class="alert alert-success" role="alert">
                         {{Session::get('success')}}
 
