@@ -70,7 +70,11 @@ class OfferController extends Controller
 
         $offer = Offer::find($request -> id);
         if(!$offer) {
-            return redirect()->back()->with(['error' => __('messages.Offer not found')]); //Session
+            return response()->json([
+                'status' => false,
+                'msg' => 'Error try again',
+
+            ]);
         }
         $offer ->delete();
 
@@ -78,6 +82,44 @@ class OfferController extends Controller
             'status' => true,
             'msg' => 'Offer deleted successfully',
             'id' => $request -> id,
+        ]);
+    }
+
+    public function edit(Request $request){
+
+        //Offer::findOrFail($offer_id); donne la page ou not found
+
+        $offer = Offer::find($request -> offer_id); // search in given table id only
+        if(!$offer){
+            return response()->json([
+                'status' => false,
+                'msg' => 'Error try again',
+                ]);
+        }
+        $offer = Offer::select('id', 'name_ar', 'name_en', 'details_ar', 'details_en', 'price', 'photo')
+            -> find($request -> offer_id);
+        return view('ajax_offers.edit', compact('offer'));
+
+        return $offer_id;
+    }
+
+    public function update(Request $request){
+
+        //update data
+        //chek if offer exist
+        $offer = Offer::find($request -> offer_id);
+        if(!$offer) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'Error try again',
+            ]);
+        }
+        //update data
+         $offer->update($request->all());
+
+        return response()->json([
+            'status' => true,
+            'msg' => 'Offer update successfully',
         ]);
     }
 }

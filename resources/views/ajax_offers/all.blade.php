@@ -30,6 +30,7 @@
                 <td><a href="{{route('offers.delete',$offer -> id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
 
                 <td><a href="" offer_id="{{$offer -> id}}" class="delete_btn btn btn-danger">delete ajax</a></td>
+                <td><a href="{{route('ajax.offers.edit',$offer -> id)}}" class="btn btn-success">update</a></td
             </tr>
         @endforeach
 

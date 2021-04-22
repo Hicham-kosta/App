@@ -138,6 +138,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::get('all', 'OfferController@all')-> name('ajax.offers.all');
         Route::post('delete', 'OfferController@delete')-> name('ajax.offers.delete');
 
+        Route::get('edit/{offer_id}', 'OfferController@edit')->name('ajax.offers.edit');
+        Route::post('update', 'OfferController@update')->name('ajax.offers.update');
+
         //with post not reload of page
 
     });
