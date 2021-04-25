@@ -92,15 +92,13 @@ class OfferController extends Controller
         $offer = Offer::find($request -> offer_id); // search in given table id only
         if(!$offer){
             return response()->json([
-                'status' => false,
-                'msg' => 'Error try again',
-                ]);
+                 'status' => false,
+              'msg' => 'Error try again',
+            ]);
         }
         $offer = Offer::select('id', 'name_ar', 'name_en', 'details_ar', 'details_en', 'price', 'photo')
             -> find($request -> offer_id);
         return view('ajax_offers.edit', compact('offer'));
-
-        return $offer_id;
     }
 
     public function update(Request $request){
@@ -110,7 +108,7 @@ class OfferController extends Controller
         $offer = Offer::find($request -> offer_id);
         if(!$offer) {
             return response()->json([
-                'status' => false,
+               'status' => false,
                 'msg' => 'Error try again',
             ]);
         }

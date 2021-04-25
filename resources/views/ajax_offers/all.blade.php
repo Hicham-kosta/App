@@ -26,11 +26,11 @@
                 <td>{{$offer -> price}}</td>
                 <td>{{$offer -> details}}</td>
                 <td><img style="..." src="{{asset('images/offers/'.$offer -> photo)}}"></td>
-                <td><a href="{{url('offers/edit/'.$offer -> id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
+                <td><a href="{{url('offers/edit/',$offer -> id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
                 <td><a href="{{route('offers.delete',$offer -> id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
 
                 <td><a href="" offer_id="{{$offer -> id}}" class="delete_btn btn btn-danger">delete ajax</a></td>
-                <td><a href="{{route('ajax.offers.edit',$offer -> id)}}" class="btn btn-success">update</a></td
+                <td><a href="{{route('ajax.offers.edit',$offer -> id)}}" class="btn btn-success">update ajax</a></td
             </tr>
         @endforeach
 

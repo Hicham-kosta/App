@@ -19,9 +19,9 @@
 
 
 
-//Route::get('/test1', function () {
-// return 'welcome';
-//});
+Route::get('/test1', function () {
+ return 'Not Adult';
+}) -> name('not.adult');
 
 //route parameters
 
@@ -97,7 +97,7 @@ Auth::routes(['verify'=>true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 
-Route::get('/', 'HomeController@getWelcome');
+Route::get('/welcome', 'HomeController@getWelcome');
 
 
 Route::get('/redirect/{service}', 'SocialController@redirect');
@@ -126,7 +126,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 });
 
-########################### AJAX ############################
+########################### Begin AJAX ############################
 
 
 
@@ -145,5 +145,20 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     });
 
-########################### AJAX ############################
+########################### End AJAX #############################
+
+########################## Begin authenticate and guards #########
+
+Route::group(['middleware' => 'CheckAge', 'namespace' => 'Auth'], function () {
+    Route::get('adults', 'CustomAuthController@getAdults')->name('adult');
+
+});
+
+    Route::get('site', 'Auth\CustomAuthController@site')->middleware('auth')->name('site'); //par defaut auth:web
+    Route::get('admin', 'Auth\CustomAuthController@admin')->middleware('auth:admin')->name('admin');
+
+    Route::get('admin/login', 'Auth\CustomAuthController@adminLogin')->name('admin.login');
+    Route::post('admin/login', 'Auth\CustomAuthController@adminLoginEnter')->name('save.admin.login');
+
+########################## End authenticate and guards ###########
 

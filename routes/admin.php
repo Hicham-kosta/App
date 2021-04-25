@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/admin', function () {
+/*Route::get('/admin', function () {
     return ('welcome hicham');
-});
+});*/
