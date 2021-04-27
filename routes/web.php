@@ -122,7 +122,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('all', 'CrudController@getAllOffers')->name('offers.all');
 });
 
-    Route::get('youtube', 'CrudController@getVideo');
+    Route::get('youtube', 'CrudController@getVideo')->middleware('auth');
 
 });
 
@@ -154,11 +154,17 @@ Route::group(['middleware' => 'CheckAge', 'namespace' => 'Auth'], function () {
 
 });
 
-    Route::get('site', 'Auth\CustomAuthController@site')->middleware('auth')->name('site'); //par defaut auth:web
-    Route::get('admin', 'Auth\CustomAuthController@admin')->middleware('auth:admin')->name('admin');
+    Route::get('site', 'Auth\CustomAuthController@site')->middleware('auth:web')->name('site'); //par defaut auth:web
+    Route::get('admin', 'Auth\CustomAuthController@admin') ->middleware('auth:admin')->name('admin');
 
     Route::get('admin/login', 'Auth\CustomAuthController@adminLogin')->name('admin.login');
     Route::post('admin/login', 'Auth\CustomAuthController@adminLoginEnter')->name('save.admin.login');
 
 ########################## End authenticate and guards ###########
+
+########################## Begin Relations #######################
+
+Route::get('has-one', 'Relations\RelationsController@hasOneRelation');
+
+########################## End Relations #########################
 

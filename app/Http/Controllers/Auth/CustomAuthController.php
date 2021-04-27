@@ -25,7 +25,7 @@ class CustomAuthController extends Controller
 
     public function adminLogin(){
 
-        return view('Auth.adminLogin');
+        return view('auth.adminLogin');
     }
 
     public function adminLoginEnter(Request $request){
